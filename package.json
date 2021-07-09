@@ -1,0 +1,33 @@
+{
+  "name": "remark-plugin-code-snippets",
+  "version": "1.0.0-alpha.0",
+  "description": "Remark plugin for sourcing code snippets from files",
+  "keywords": [
+    "docusaurus",
+    "remark",
+    "mdx",
+    "code block"
+  ],
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duanwilliam/remark-plugin-code-snippets.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {
+    "@docusaurus/core": "^2.0.0-alpha.72 || ^2.0.0",
+    "react": "^16.8.4 || ^17.0.0",
+    "react-dom": "^16.8.4 || ^17.0.0"
+  },
+  "engines": {
+    "node": ">=12.13.0"
+  }
+}
