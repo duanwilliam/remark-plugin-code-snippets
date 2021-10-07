@@ -6,7 +6,6 @@ import * as path from 'path';
 
 import { fileExists } from './utils/file';
 import { isOnlyWhitespace, getTrimFunc } from './utils/whitespace';
-import { extensions } from './extensions';
 
 const fileRegex = /file=(["'])(?<file>.*?)\1(?::(?<start>[1-9]\d*)(?:-(?<end>[1-9]\d*))?)?/;
 const insertFileContentsRegex = /^[^\S\r\n]*{{[^\S\r\n]FILE(?::(?<start>[1-9]\d*)(?:-(?<end>[1-9]\d*))?)?[^\S\r\n]}}[^\S\r\n]*$/gm;
@@ -91,15 +90,13 @@ const attacher: Plugin = (options: Options = {}) => {
     basePath,
     trim = true,
     normalizeIndent = true,
-    extensions: userExtensions,
+    extensions = {},
   } = options;
-
-  const resolvedExtensions = { ...extensions, ...userExtensions };
 
   const resolvedOptions: TransformNodeOptions = {
     basePath,
     trim: getTrimFunc(trim, normalizeIndent),
-    extensions: resolvedExtensions,
+    extensions,
   };
 
   const transformer: Transformer = async (node: MDASTNode, file) => {
