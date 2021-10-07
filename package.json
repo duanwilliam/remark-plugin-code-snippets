@@ -2,13 +2,19 @@
   "name": "remark-plugin-code-snippets",
   "version": "1.0.0-alpha.0",
   "description": "Remark plugin for sourcing code snippets from files",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "docusaurus",
     "remark",
     "mdx",
-    "code block"
+    "code block",
+    "snippets"
   ],
-  "main": "src/index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -18,12 +24,22 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@types/unist": "^2.0.6",
+    "rollup": "^2.58.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.4.3",
+    "unified": "^10.1.0"
+  },
   "peerDependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.72 || ^2.0.0",
     "react": "^16.8.4 || ^17.0.0",
     "react-dom": "^16.8.4 || ^17.0.0"
   },
