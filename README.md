@@ -45,7 +45,9 @@ Language inference is only used when the file sourced is defined in the `lang` f
 
 ### Basic Usage
 
-Source a file into a code block using `file="path/to/file/from/basepath"` in the language or metastring of the code block. Both single quotes and double quotes work, but they must match and one of them must be present. By default, if the contents of the code block are otherwise empty, the entirety of the file is populated into the code block. If defined in the language field, the language will be inferred.
+Source a file into a code block using `file="path/to/file/from/basepath"` in the language or metastring of the code block. If defined in the language, the syntax highlighting will be inferred from the file extension.
+
+Both single quotes and double quotes can be used, but they must match and one of them must be present.
 
     # valid
     ```md file='README.md'
@@ -59,16 +61,14 @@ Source a file into a code block using `file="path/to/file/from/basepath"` in the
 
 All instances of the string `{{ FILE }}` in the code block's contents are replaced by the file contents. This string must be on its own line, with nothing else but leading and/or trailing whitespace.
 
-**Note: if the code block contains non-whitespace content and does not contain `{{ FILE }}`, code block content will not be overwritten, and the file contents will not be used.**
-
 ### Sourcing parts of a file
 
 Append `:#-#` to specify a range of lines to source from the file, rather than the entirety of the file. Leading zeros are not recognized. To source only a single line, omit the ending `-#`. To source from a line to the end of the file, omit the ending `#`.
 
     ```js file="index.js":2
 
-    ```js file="index.js"
+    ```js file="index.js":2-3
 
     {{ FILE:1 }}
-    {{ FILE:2-3 }}
+    {{ FILE }}
     {{ FILE:4- }}
