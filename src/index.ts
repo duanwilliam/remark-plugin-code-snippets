@@ -76,7 +76,8 @@ const transformNode = async (
     return node.value.replace(insertFileContentsRegex, (...args) => {
       const [_match, _p1, _p2, _o, _str, groups] = args;
       const { start: embedStart, end: embedEnd, dash: embedDash } = groups;
-      return getFileSlice(fileContent, lines, embedStart, embedEnd, embedDash);
+      const [s, e] = embedStart === undefined ? [start, end] : [embedStart, embedEnd];
+      return getFileSlice(fileContent, lines, s, e, embedDash);
     });
   })();
 
