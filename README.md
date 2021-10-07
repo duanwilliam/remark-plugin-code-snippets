@@ -41,6 +41,8 @@ Map of file extensions to the desired language for syntax highlighting. Only the
 
 Language inference is only used when the file sourced is defined in the `lang` field of the code block.
 
+You can configure the extension mapping with the `extensions` field in `options`. For instance, `{ mdx: md }` would make sourced files with the `.mdx` extension result in a codeblock with language `md`.
+
 ## Syntax
 
 ### Basic Usage
